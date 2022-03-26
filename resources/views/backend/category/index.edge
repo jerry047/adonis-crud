@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Category</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>All Categories</h2>
+  <a href="/categories/create" class="btn btn-primary">Create New</a>
+  <br/>
+  <br/>
+  @if(!categories.length)
+    <div class="alert alert-info" role="alert">
+      No records found!
+    </div>
+  @end
+  @if(categories.length)  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each((category) in categories)
+          <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.createdAt }}</td>
+            <td>{{ category.updatedAt }}</td>
+            <td>
+              <a href="/categories/{{ category.id }}/edit" class="text-info">Edit</a>
+              <a href="/categories/{{ category.id }}/delete" class="text-danger">Delete</a>
+            </td>
+          </tr>
+        @end
+      </tbody>
+    </table>
+  @end
+</div>
+
+</body>
+</html>
